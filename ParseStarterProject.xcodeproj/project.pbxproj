@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3EB06A501B7A67F500D30DD9 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB06A4F1B7A67F500D30DD9 /* File.swift */; };
+		3E7DC6D81B7A792D00B643E9 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DC6D71B7A792D00B643E9 /* ImageResizer.swift */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
 		81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814C1A49DA1800E65899 /* ViewController.swift */; };
 		81BA81501A49DA1800E65899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BA814E1A49DA1800E65899 /* Main.storyboard */; };
@@ -24,7 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3EB06A4F1B7A67F500D30DD9 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		3E7DC6D71B7A792D00B643E9 /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		81BA81451A49DA1800E65899 /* ParseStarterProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseStarterProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BA81491A49DA1800E65899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81BA814A1A49DA1800E65899 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		3EB06A4B1B7A679E00D30DD9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3EB06A4F1B7A67F500D30DD9 /* File.swift */,
+				3E7DC6D71B7A792D00B643E9 /* ImageResizer.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -238,8 +238,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E7DC6D81B7A792D00B643E9 /* ImageResizer.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
-				3EB06A501B7A67F500D30DD9 /* File.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

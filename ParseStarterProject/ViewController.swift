@@ -33,6 +33,12 @@ class ViewController: UIViewController {
         self.presentViewController(self.picker, animated: true, completion: nil)
         println("phot album clicked")
       }
+//      I will add the camera part in after lecture today
+//      let cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default) { (alert) -> Void in
+//        self.presentViewController(self.picker, animated: true, completion: nil)
+//        println("camera clicked")
+//      }
+
       
       let chromeAction = UIAlertAction(title: "Chrome", style: UIAlertActionStyle.Default) { (alert) -> Void in
        
@@ -73,8 +79,13 @@ class ViewController: UIViewController {
       }
       
       let sepiaAction = UIAlertAction(title: "Sepia", style: UIAlertActionStyle.Default) { (alert) -> Void in
+        let baseImage = self.snapShot.image
+        let x = baseImage!.size.width / 2
+        let y = baseImage!.size.height / 2
         
-        let image = CIImage(image: self.snapShot.image!)
+        let sizeForResizing = CGSize(width: x, height: y)
+        let newImage = ImageResizer.resizeImage(baseImage!, size: sizeForResizing)
+        let image = CIImage(image: newImage)
         let sepiaFilter = CIFilter(name: "CISepiaTone")
         sepiaFilter.setValue(image, forKey: kCIInputImageKey)
 
@@ -97,6 +108,7 @@ class ViewController: UIViewController {
       
       alert.addAction(cancelAction)
       alert.addAction(albumAction)
+//      alert.addAction(cameraAction)
       alert.addAction(chromeAction)
       alert.addAction(tonalAction)
       alert.addAction(sepiaAction)
