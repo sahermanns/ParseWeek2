@@ -36,10 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Uncomment and fill in with your Parse credentials:
         Parse.setApplicationId("Z3m9Ob6uzRyc1bIAga8S3tUClVdgYTgiNwjC54QQ",
         clientKey: "EH986TF9QXH4zwF6KdjSuGuzpxNt0blKzR5sxv4u")
-        let testObject = PFObject(className: "Remote")
-        testObject["foo"] = "blah"
-        testObject["name"] = "Sarah"
-        testObject.save()
+//        let testObject = PFObject(className: "Remote")
+//        testObject["foo"] = "blah"
+//        testObject["name"] = "Sarah"
+//        testObject.save()
 
         //
         // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as

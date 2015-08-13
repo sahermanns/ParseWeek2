@@ -3,13 +3,23 @@
 //
 //  Copyright 2011-present Parse Inc. All rights reserved.
 
-// This is SARAH'S COPY OF THE PROJECT1!!!!
+// This is SARAH'S COPY OF THE PROJECT!!!!
 
 import UIKit
 import Parse
 
 class ViewController: UIViewController {
+  
+//  buffer constants
+  let kTrailingImageViewConstraintBuffer: CGFloat = 40
+  let kLeadingImageViewConstraintBuffer: CGFloat = -40
+  let kTopImageViewConstraintBuffer: CGFloat = 40
+  let kBottonImageViewConstraintBuffer: CGFloat = 70
+  let kBottomCollectionViewConstraintBuffer: CGFloat = 8
+  let kThumbnailSize = CGSize(width: 45, height: 45)
 
+
+//all outlets
   @IBOutlet weak var trailingImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var leadingImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var bottonImageViewConstraint: NSLayoutConstraint!
@@ -17,15 +27,36 @@ class ViewController: UIViewController {
   @IBOutlet weak var bottomCollectionViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var snapShot: UIImageView!
   @IBOutlet weak var alertButton: UIButton!
-  
+  @IBOutlet weak var collectionView: UICollectionView!
+ 
   let picker: UIImagePickerController = UIImagePickerController()
   
+  var filters : [(UIImage, CIContext) -> (UIImage!)] = [FilterService.sepiaImageFromOriginalImage, FilterService.tonalImageFromOriginalImage, FilterService.chromeImageFromOriginalImage, FilterService.sepiaImageFromOriginalImage, FilterService.tonalImageFromOriginalImage, FilterService.chromeImageFromOriginalImage]
+  
+  let context = CIContext(options: nil)
+  
+//  let options = [kCIContextWorkingColorSpace : NSNull()]
+//  let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
+//  let gpuContext = CIContext(EAGLContext: eaglContext, options: options)
+//  
+  var thumbnail : UIImage?
+  
   let alert = UIAlertController(title: "camera clicked", message: "the camera was clicked", preferredStyle: UIAlertControllerStyle.ActionSheet)
+  
+  var displayImage : UIImage! {
+    didSet {
+      snapShot.image = displayImage
+      thumbnail = ImageResizer.resizeImage(displayImage, size:kThumbnailSize)
+      collectionView.reloadData()
+    }
+  }
 
     override func viewDidLoad() {
         super.viewDidLoad()
       
       title = "Snap Shot"
+      collectionView.dataSource = self
+      displayImage = UIImage(named: "flatLandPic.jpg")
       
       if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
         
@@ -46,84 +77,7 @@ class ViewController: UIViewController {
         alert.addAction(cameraAction)
       }
       
-      let chromeAction = UIAlertAction(title: "Chrome", style: UIAlertActionStyle.Default) { (alert) -> Void in
-        
-        let baseImage = self.snapShot.image
-        let x = baseImage!.size.width / 2
-        let y = baseImage!.size.height / 2
-        
-        let sizeForResizing = CGSize(width: x, height: y)
-        let newImage = ImageResizer.resizeImage(baseImage!, size: sizeForResizing)
-        let image = CIImage(image: self.snapShot.image!)
-        let chromeFilter = CIFilter(name: "CIPhotoEffectChrome")
-        chromeFilter.setValue(image, forKey: kCIInputImageKey)
-        
-        let context = CIContext(options: nil)
-        let options = [kCIContextWorkingColorSpace : NSNull()]
-        let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
-        let gpuContext = CIContext(EAGLContext: eaglContext, options: options)
-        
-        let outputImage = chromeFilter.outputImage
-        let extent = outputImage.extent()
-        let cgImage = gpuContext.createCGImage(outputImage, fromRect: extent)
-        let finalImage = UIImage(CGImage: cgImage)
-        self.snapShot.image = finalImage
-        
-      }
       
-      let tonalAction = UIAlertAction(title: "Tonal", style: UIAlertActionStyle.Default) { (alert) -> Void in
-        let baseImage = self.snapShot.image
-        let x = baseImage!.size.width / 2
-        let y = baseImage!.size.height / 2
-        
-        let sizeForResizing = CGSize(width: x, height: y)
-        let newImage = ImageResizer.resizeImage(baseImage!, size: sizeForResizing)
-        let image = CIImage(image: self.snapShot.image!)
-        let tonalFilter = CIFilter(name: "CIPhotoEffectTonal")
-        tonalFilter.setValue(image, forKey: kCIInputImageKey)
-        
-        let context = CIContext(options: nil)
-        
-        let options = [kCIContextWorkingColorSpace : NSNull()]
-        let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
-        let gpuContext = CIContext(EAGLContext: eaglContext, options: options)
-        
-        let outputImage = tonalFilter.outputImage
-        let extent = outputImage.extent()
-        let cgImage = gpuContext.createCGImage(outputImage, fromRect: extent)
-        let finalImage = UIImage(CGImage: cgImage)
-        self.snapShot.image = finalImage
-
-      }
-      
-      let sepiaAction = UIAlertAction(title: "Sepia", style: UIAlertActionStyle.Default) { (alert) -> Void in
-        let baseImage = self.snapShot.image
-        let x = baseImage!.size.width / 2
-        let y = baseImage!.size.height / 2
-        
-        let sizeForResizing = CGSize(width: x, height: y)
-        let newImage = ImageResizer.resizeImage(baseImage!, size: sizeForResizing)
-        let image = CIImage(image: newImage)
-        let sepiaFilter = CIFilter(name: "CISepiaTone")
-        sepiaFilter.setValue(image, forKey: kCIInputImageKey)
-
-        //cpu context, not as fast as GPU context
-        let context = CIContext(options: nil)
-        
-        //gpu context
-        let options = [kCIContextWorkingColorSpace : NSNull()]
-        let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
-        let gpuContext = CIContext(EAGLContext: eaglContext, options: options)
-        
-        
-        let outputImage = sepiaFilter.outputImage
-        let extent = outputImage.extent()
-        let cgImage = gpuContext.createCGImage(outputImage, fromRect: extent)
-        let finalImage = UIImage(CGImage: cgImage)
-        self.snapShot.image = finalImage
-        
-      }
-        
       if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
           
         let filterAction = UIAlertAction(title: "Filter", style: UIAlertActionStyle.Default) { (alert) -> Void in
@@ -148,20 +102,11 @@ class ViewController: UIViewController {
           
         })
       }
-    
-//      if snapShot.image = image {
-//        alert.addAction(sepiaAction)
-//        alert.addAction(tonalAction)
-//        alert.addAction(chromeAction)
-//      }
       
       alert.addAction(cancelAction)
       alert.addAction(collectionAction)
       alert.addAction(uploadAction)
-      alert.addAction(chromeAction)
-      alert.addAction(tonalAction)
-      alert.addAction(sepiaAction)
-      
+
       
       self.picker.delegate = self
       self.picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
@@ -186,11 +131,11 @@ class ViewController: UIViewController {
   }
   
   func enterFilterMode() {
-    leadingImageViewConstraint.constant = 40
-    trailingImageViewConstraint.constant = -40
-    topImageViewConstraint.constant = 40
-    bottonImageViewConstraint.constant = 70
-    bottomCollectionViewConstraint.constant = 8
+    leadingImageViewConstraint.constant = kLeadingImageViewConstraintBuffer
+    trailingImageViewConstraint.constant = kTrailingImageViewConstraintBuffer
+    topImageViewConstraint.constant = kTopImageViewConstraintBuffer
+    bottonImageViewConstraint.constant = kBottonImageViewConstraintBuffer
+    bottomCollectionViewConstraint.constant = kBottomCollectionViewConstraintBuffer
     
     UIView.animateWithDuration(0.3, animations: { () -> Void in
       self.view.layoutIfNeeded()
@@ -201,12 +146,12 @@ class ViewController: UIViewController {
   }
   
   func closeFilterMode() {
-    leadingImageViewConstraint.constant = 20
-    trailingImageViewConstraint.constant = -20
-    topImageViewConstraint.constant = 20
-    bottonImageViewConstraint.constant = 40
-    bottomCollectionViewConstraint.constant = -100
-    
+    leadingImageViewConstraint.constant = kLeadingImageViewConstraintBuffer - 40
+    trailingImageViewConstraint.constant = kTrailingImageViewConstraintBuffer + 40
+    topImageViewConstraint.constant = kTopImageViewConstraintBuffer - 40
+    bottonImageViewConstraint.constant = kBottonImageViewConstraintBuffer - 70
+    bottomCollectionViewConstraint.constant = kBottomCollectionViewConstraintBuffer - 100
+
     UIView.animateWithDuration(0.3, animations: { () -> Void in
       self.view.layoutIfNeeded()
     })
@@ -214,12 +159,13 @@ class ViewController: UIViewController {
   
 }
 
+//*** Image Picker Extension below ***
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
     let image: UIImage = (info[UIImagePickerControllerOriginalImage] as? UIImage)!
-    self.snapShot.image = image
+    displayImage = image
     self.picker.dismissViewControllerAnimated(true, completion:nil)
 
   }
@@ -227,6 +173,26 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
   func imagePickerControllerDidCancel(picker: UIImagePickerController) {
     self.picker.dismissViewControllerAnimated(true, completion:nil)
     println("Picker was cancelled")
+  }
+}
+
+//*** Collection view functionality below ***
+extension ViewController : UICollectionViewDataSource {
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return filters.count
+  }
+  
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ThumbnailCell", forIndexPath: indexPath) as! ThumbnailCell
+    
+    let filter = filters[indexPath.row]
+    if let thumbnail = thumbnail {
+      let filteredImage = filter(thumbnail, context)
+      cell.thumbnailImage.image = filteredImage
+      }
+    
+    
+    return cell
   }
 }
 

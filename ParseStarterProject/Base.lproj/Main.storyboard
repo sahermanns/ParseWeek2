@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="film" translatesAutoresizingMaskIntoConstraints="NO" id="95y-Zi-hDi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flatLandPic" translatesAutoresizingMaskIntoConstraints="NO" id="95y-Zi-hDi">
                                 <rect key="frame" x="16" y="72" width="568" height="356"/>
                                 <color key="backgroundColor" red="0.3751045442" green="1" blue="0.60291074050000004" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
@@ -41,21 +41,35 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VJH-oE-id5"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M0v-rD-Epl">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M0v-rD-Epl">
                                     <size key="itemSize" width="62" height="61"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="min-hD-nZm">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ThumbnailCell" id="min-hD-nZm" customClass="ThumbnailCell" customModule="ParseStarterProject" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="62" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wxt-ky-KYk">
+                                                    <rect key="frame" x="6" y="5" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Wxt-ky-KYk" secondAttribute="bottom" constant="-2" id="E1W-Es-lBb"/>
+                                            <constraint firstItem="Wxt-ky-KYk" firstAttribute="top" secondItem="min-hD-nZm" secondAttribute="topMargin" constant="-3" id="NEG-4m-rgO"/>
+                                            <constraint firstItem="Wxt-ky-KYk" firstAttribute="leading" secondItem="min-hD-nZm" secondAttribute="leadingMargin" constant="-2" id="T90-AM-qpw"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Wxt-ky-KYk" secondAttribute="trailing" constant="-2" id="zfG-Ck-HVS"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="thumbnailImage" destination="Wxt-ky-KYk" id="VEY-s3-ikx"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
@@ -63,7 +77,7 @@
                                 </variation>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.3751045442" green="1" blue="0.60291074050000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="3Nq-oz-JMX" secondAttribute="centerX" id="2db-p8-6Cy"/>
                             <constraint firstItem="3Nq-oz-JMX" firstAttribute="top" secondItem="95y-Zi-hDi" secondAttribute="bottom" constant="8" id="47a-R4-8rc"/>
@@ -108,6 +122,7 @@
                         <outlet property="alertButton" destination="3Nq-oz-JMX" id="WBR-Kb-eWz"/>
                         <outlet property="bottomCollectionViewConstraint" destination="77m-2o-H8t" id="fdU-2G-DMz"/>
                         <outlet property="bottonImageViewConstraint" destination="DUB-H3-SLY" id="ev8-Bh-dmi"/>
+                        <outlet property="collectionView" destination="Ktw-dg-Nom" id="P6u-En-zyL"/>
                         <outlet property="leadingImageViewConstraint" destination="sWr-ak-ves" id="tgM-q2-VYX"/>
                         <outlet property="snapShot" destination="95y-Zi-hDi" id="b7b-Dj-Nbf"/>
                         <outlet property="topImageViewConstraint" destination="HPs-rh-Qm7" id="dve-w6-hl1"/>
@@ -156,7 +171,7 @@
             </objects>
             <point key="canvasLocation" x="1027" y="-470"/>
         </scene>
-        <!--Item-->
+        <!--Photo Feed-->
         <scene sceneID="QM8-TF-awK">
             <objects>
                 <viewController id="fzb-bD-FE2" customClass="PhotoFeedViewController" customModule="ParseStarterProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -175,7 +190,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="M6E-mY-w5X"/>
+                    <tabBarItem key="tabBarItem" title="Photo Feed" id="M6E-mY-w5X"/>
                     <connections>
                         <outlet property="tableView" destination="PKb-wc-dFo" id="jf3-rU-5FB"/>
                     </connections>
@@ -187,6 +202,6 @@
     </scenes>
     <resources>
         <image name="camera" width="225" height="225"/>
-        <image name="film" width="225" height="225"/>
+        <image name="flatLandPic" width="800" height="600"/>
     </resources>
 </document>

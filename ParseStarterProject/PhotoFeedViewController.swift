@@ -42,9 +42,14 @@ class PhotoFeedViewController: UIViewController {
                 } else if let data = data,
                   image = UIImage(data: data){
                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                      let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+                      let imageView = UIImageView(frame: CGRect(x: 8, y: 8, width: 100, height: 100))
                       self.view.addSubview(imageView)
                       imageView.image = image
+                      
+//                      let cell.snapShot = UIImageView(frame: CGRect(x: 8, y: 8, width: 100, height: 100))
+//                      self.view.addSubview(imageView)
+//                      imageView.image = image
+
                     })
                 }
               })
