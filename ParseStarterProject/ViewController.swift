@@ -44,7 +44,9 @@ class ViewController: UIViewController {
 //  
   var thumbnail : UIImage?
   
-  let alert = UIAlertController(title: "camera clicked", message: "the camera was clicked", preferredStyle: UIAlertControllerStyle.ActionSheet)
+//* in the next line you can choose beteen alert message or actionsheet which comes from the bottom*
+  let alert = UIAlertController(title: "camera clicked", message: "the camera was clicked", preferredStyle: UIAlertControllerStyle.Alert)
+//  let alert = UIAlertController(title: "camera clicked", message: "the camera was clicked", preferredStyle: UIAlertControllerStyle.ActionSheet)
   
   var displayImage : UIImage! {
     didSet {
@@ -75,11 +77,11 @@ class ViewController: UIViewController {
         println("phot album clicked")
       }
       
-      if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-        let cameraAction = UIAlertAction(title: "Take a Picture", style: UIAlertActionStyle.Default) { (alert) -> Void in
-        }
-        alert.addAction(cameraAction)
-      }
+//      if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+//        let cameraAction = UIAlertAction(title: "Take a Picture", style: UIAlertActionStyle.Default) { (alert) -> Void in
+//        }
+//        alert.addAction(cameraAction)
+//      }
       
       
       if UIDevice.currentDevice().userInterfaceIdiom == .Phone {

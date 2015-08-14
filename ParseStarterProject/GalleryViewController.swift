@@ -16,7 +16,7 @@ protocol ImageSelectedDelegate : class {
 class GalleryViewController: UIViewController {
   
   var fetchResult : PHFetchResult!
-  let cellSize = CGSize(width: 100, height: 100)
+  let cellSize = CGSize(width: 45, height: 45)
   var desiredFinalImageSize : CGSize!
   var startingScale : CGFloat = 0
   var scale : CGFloat = 0
@@ -32,7 +32,34 @@ class GalleryViewController: UIViewController {
       
       collectionView.dataSource = self
       collectionView.delegate = self
+      
+      let pinchGesture = UIPinchGestureRecognizer(target: self, action: "pinchRecognized:")
+      collectionView.addGestureRecognizer(pinchGesture)
     }
+  
+  func pinchRecognized(pinch: UIPinchGestureRecognizer) {
+    
+    if pinch.state == UIGestureRecognizerState.Began {
+      println("pinch started")
+      startingScale = pinch.scale
+    }
+    if pinch.state == UIGestureRecognizerState.Changed {
+      println("pinch changing")
+      startingScale = pinch.scale
+    }
+    if pinch.state == UIGestureRecognizerState.Ended {
+      println("pinch ended")
+      scale = startingScale * pinch.scale
+      let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+      let newSize = CGSize(width: layout.itemSize.width * scale, height: layout.itemSize.height * scale)
+      
+      collectionView.performBatchUpdates({ () -> Void in
+        layout.itemSize = newSize
+        layout.invalidateLayout()
+      }, completion: nil)
+      
+    }
+  }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
