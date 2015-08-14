@@ -6,12 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostCell">
-            <connections>
-                <outlet property="snapShot" destination="jGc-Kk-Wpr" id="A5f-Qc-L7G"/>
-                <outlet property="snapShotDescription" destination="4kV-Y6-hP5" id="CzZ-t5-4QZ"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostCell"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="146" id="baG-MV-v0f" customClass="PostCell" customModule="ParseStarterProject" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="498" height="146"/>
@@ -42,6 +37,10 @@
                     <constraint firstItem="jGc-Kk-Wpr" firstAttribute="leading" secondItem="Obu-b4-Lo8" secondAttribute="leadingMargin" id="x9X-Mg-ste"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="snapShot" destination="jGc-Kk-Wpr" id="OvV-9Y-0Ea"/>
+                <outlet property="snapShotDescription" destination="4kV-Y6-hP5" id="oYS-6h-VEP"/>
+            </connections>
             <point key="canvasLocation" x="362" y="279"/>
         </tableViewCell>
     </objects>

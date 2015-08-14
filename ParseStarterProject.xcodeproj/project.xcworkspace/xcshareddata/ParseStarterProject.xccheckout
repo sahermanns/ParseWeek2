@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>EB480C9B-34C5-470E-8E01-1EE03E034EFA</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>ParseStarterProject</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>098C5B2F0EB3D9F421BB587AFDBCA336C0057EEA</key>
 		<string>https://github.com/sahermanns/ParseWeek2.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ParseStarterProject.xcodeproj/project.xcworkspace</string>
+	<string>ParseStarterProject.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>098C5B2F0EB3D9F421BB587AFDBCA336C0057EEA</key>

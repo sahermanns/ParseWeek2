@@ -6,10 +6,10 @@
 //
 //
 
-import Foundation
+import UIKit
 
-//struct Post {
-//  var snapShot : UIImage?
-//  let snapShotDescription: String?
-//  
-//}
+struct Post {
+  var snapShot : UIImage?
+  let snapShotDescription: String?
+  
+}
