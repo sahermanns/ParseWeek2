@@ -18,6 +18,7 @@ class ViewController: UIViewController {
   let kBottomCollectionViewConstraintBuffer: CGFloat = 8
   let kThumbnailSize = CGSize(width: 45, height: 45)
 
+  let kStandardConstraintMargin : CGFloat = 8
 
 //all outlets
   @IBOutlet weak var trailingImageViewConstraint: NSLayoutConstraint!
@@ -28,6 +29,8 @@ class ViewController: UIViewController {
   @IBOutlet weak var snapShot: UIImageView!
   @IBOutlet weak var alertButton: UIButton!
   @IBOutlet weak var collectionView: UICollectionView!
+  
+  
  
   let picker: UIImagePickerController = UIImagePickerController()
   
@@ -56,6 +59,7 @@ class ViewController: UIViewController {
       
       title = "Snap Shot"
       collectionView.dataSource = self
+      collectionView.delegate = self
       displayImage = UIImage(named: "flatLandPic.jpg")
       
       if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
@@ -103,9 +107,14 @@ class ViewController: UIViewController {
         })
       }
       
+      let galleryAction = UIAlertAction(title: "Gallery", style: UIAlertActionStyle.Default) { (alert) -> Void in
+        self.performSegueWithIdentifier("ShowGallery", sender: self)
+  
+      }
       alert.addAction(cancelAction)
       alert.addAction(collectionAction)
       alert.addAction(uploadAction)
+      alert.addAction(galleryAction)
 
       
       self.picker.delegate = self
@@ -129,6 +138,15 @@ class ViewController: UIViewController {
     self.presentViewController(alert, animated: true, completion: nil)
     
   }
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "ShowGallery" {
+      if let galleryViewController = segue.destinationViewController as? GalleryViewController {
+        galleryViewController.delegate = self
+        galleryViewController.desiredFinalImageSize = snapShot.frame.size
+      }
+    }
+  }
+  
   
   func enterFilterMode() {
     leadingImageViewConstraint.constant = kLeadingImageViewConstraintBuffer
@@ -146,10 +164,10 @@ class ViewController: UIViewController {
   }
   
   func closeFilterMode() {
-    leadingImageViewConstraint.constant = kLeadingImageViewConstraintBuffer - 40
-    trailingImageViewConstraint.constant = kTrailingImageViewConstraintBuffer + 40
-    topImageViewConstraint.constant = kTopImageViewConstraintBuffer - 40
-    bottonImageViewConstraint.constant = kBottonImageViewConstraintBuffer - 70
+    leadingImageViewConstraint.constant = kLeadingImageViewConstraintBuffer - kLeadingImageViewConstraintBuffer
+    trailingImageViewConstraint.constant = kTrailingImageViewConstraintBuffer - kTrailingImageViewConstraintBuffer
+    topImageViewConstraint.constant = kTopImageViewConstraintBuffer
+    bottonImageViewConstraint.constant = kBottonImageViewConstraintBuffer - kBottonImageViewConstraintBuffer
     bottomCollectionViewConstraint.constant = kBottomCollectionViewConstraintBuffer - 100
 
     UIView.animateWithDuration(0.3, animations: { () -> Void in
@@ -176,7 +194,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
   }
 }
 
-//*** Collection view functionality below ***
+//*** CollectionView Datasource functionality below ***
 extension ViewController : UICollectionViewDataSource {
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return filters.count
@@ -196,5 +214,23 @@ extension ViewController : UICollectionViewDataSource {
   }
 }
 
+//**Extension of the CollectionView Delegate
+extension ViewController : UICollectionViewDelegate {
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    let filter = filters[indexPath.row]
+    if let image = snapShot {
+      let filteredImage = filter(image.image!, context)
+      self.snapShot.image = filteredImage
+    }
+  }
+  
+}
+
+//**
+extension ViewController : ImageSelectedDelegate {
+  func controllerDidSelectImage(newImage: UIImage) {
+    displayImage = newImage
+  }
+}
 
 

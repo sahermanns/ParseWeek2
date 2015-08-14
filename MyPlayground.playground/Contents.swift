@@ -8,9 +8,16 @@ var str = "Hello, playground"
 
 var sentence = "Regardless of where you start the fun, you’ll cruise the Seattle Waterfront to see the Seattle Aquarium, the Great Wheel and where the Alaskan Gold Rush first started."
 
-func findWords: String-> Int {
+func findWords (String) -> Int {
   let word = String()
   var words = [String]()
   
   
 }
+
+//Code Challenge: Write a function that returns all the odd elements of an array
+
+
+//Code Challenge: Write a function that computes the list of the first 100 Fibonacci numbers.
+
+//Code Challenge: Write a function that tests whether a string is a palindrome

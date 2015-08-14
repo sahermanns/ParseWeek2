@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E718A421B7D39D9008FDC9A /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E718A411B7D39D9008FDC9A /* GalleryViewController.swift */; };
 		3E7DC6D81B7A792D00B643E9 /* ImageResizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7DC6D71B7A792D00B643E9 /* ImageResizer.swift */; };
 		3EF6BFB71B7AB2F800473265 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF6BFB61B7AB2F800473265 /* Keys.swift */; };
 		3EF6BFBA1B7B929200473265 /* PhotoFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF6BFB81B7B929200473265 /* PhotoFeedViewController.swift */; };
 		3EF6BFBD1B7BA4ED00473265 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EF6BFBC1B7BA4ED00473265 /* Cell.xib */; };
-		3EF6BFBF1B7BAA7B00473265 /* post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF6BFBE1B7BAA7B00473265 /* post.swift */; };
 		3EF6BFC11B7BAB4700473265 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF6BFC01B7BAB4700473265 /* PostCell.swift */; };
 		3EF6BFC31B7C12FE00473265 /* FilterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF6BFC21B7C12FE00473265 /* FilterService.swift */; };
 		3EF6BFC51B7C1C9600473265 /* ThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF6BFC41B7C1C9600473265 /* ThumbnailCell.swift */; };
+		3EF6BFC71B7D0C5800473265 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF6BFC61B7D0C5800473265 /* Post.swift */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
 		81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814C1A49DA1800E65899 /* ViewController.swift */; };
 		81BA81501A49DA1800E65899 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81BA814E1A49DA1800E65899 /* Main.storyboard */; };
@@ -31,14 +32,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E718A411B7D39D9008FDC9A /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		3E7DC6D71B7A792D00B643E9 /* ImageResizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResizer.swift; sourceTree = "<group>"; };
 		3EF6BFB61B7AB2F800473265 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		3EF6BFB81B7B929200473265 /* PhotoFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoFeedViewController.swift; sourceTree = "<group>"; };
 		3EF6BFBC1B7BA4ED00473265 /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cell.xib; sourceTree = "<group>"; };
-		3EF6BFBE1B7BAA7B00473265 /* post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = post.swift; sourceTree = "<group>"; };
 		3EF6BFC01B7BAB4700473265 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		3EF6BFC21B7C12FE00473265 /* FilterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterService.swift; sourceTree = "<group>"; };
 		3EF6BFC41B7C1C9600473265 /* ThumbnailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCell.swift; sourceTree = "<group>"; };
+		3EF6BFC61B7D0C5800473265 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		81BA81451A49DA1800E65899 /* ParseStarterProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParseStarterProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81BA81491A49DA1800E65899 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81BA814A1A49DA1800E65899 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,8 +82,9 @@
 		3EB06A4B1B7A679E00D30DD9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3EF6BFC21B7C12FE00473265 /* FilterService.swift */,
+				3EF6BFC61B7D0C5800473265 /* Post.swift */,
 				3EF6BFC41B7C1C9600473265 /* ThumbnailCell.swift */,
-				3EF6BFBE1B7BAA7B00473265 /* post.swift */,
 				3EF6BFC01B7BAB4700473265 /* PostCell.swift */,
 				3EF6BFB61B7AB2F800473265 /* Keys.swift */,
 				3E7DC6D71B7A792D00B643E9 /* ImageResizer.swift */,
@@ -101,8 +104,8 @@
 		3EB06A4E1B7A67D300D30DD9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3E718A411B7D39D9008FDC9A /* GalleryViewController.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
-				3EF6BFC21B7C12FE00473265 /* FilterService.swift */,
 				3EF6BFB81B7B929200473265 /* PhotoFeedViewController.swift */,
 			);
 			name = Controller;
@@ -265,8 +268,9 @@
 				3E7DC6D81B7A792D00B643E9 /* ImageResizer.swift in Sources */,
 				3EF6BFBA1B7B929200473265 /* PhotoFeedViewController.swift in Sources */,
 				3EF6BFB71B7AB2F800473265 /* Keys.swift in Sources */,
-				3EF6BFBF1B7BAA7B00473265 /* post.swift in Sources */,
 				3EF6BFC31B7C12FE00473265 /* FilterService.swift in Sources */,
+				3EF6BFC71B7D0C5800473265 /* Post.swift in Sources */,
+				3E718A421B7D39D9008FDC9A /* GalleryViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 			);

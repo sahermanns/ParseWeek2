@@ -106,14 +106,14 @@
                                 <exclude reference="iZs-6E-puF"/>
                                 <exclude reference="nqg-6Y-quH"/>
                                 <exclude reference="yYP-JD-a8h"/>
-                                <exclude reference="47a-R4-8rc"/>
                                 <exclude reference="W1g-QR-3rJ"/>
+                                <exclude reference="47a-R4-8rc"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="constraints">
-                                <include reference="47a-R4-8rc"/>
                                 <exclude reference="DUB-H3-SLY"/>
+                                <include reference="47a-R4-8rc"/>
                             </mask>
                         </variation>
                     </view>
@@ -127,11 +127,76 @@
                         <outlet property="snapShot" destination="95y-Zi-hDi" id="b7b-Dj-Nbf"/>
                         <outlet property="topImageViewConstraint" destination="HPs-rh-Qm7" id="dve-w6-hl1"/>
                         <outlet property="trailingImageViewConstraint" destination="pMD-XV-5NV" id="Y4T-WF-8eB"/>
+                        <segue destination="YyL-Bi-0wO" kind="show" identifier="ShowGallery" id="Jkt-sY-r6p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1575" y="264"/>
+        </scene>
+        <!--Gallery View Controller-->
+        <scene sceneID="WCE-q4-pRk">
+            <objects>
+                <viewController storyboardIdentifier="GalleryViewController" id="YyL-Bi-0wO" customClass="GalleryViewController" customModule="ParseStarterProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lUj-AW-BWE"/>
+                        <viewControllerLayoutGuide type="bottom" id="6l5-P8-6TF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DXp-rt-u6F">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xlx-MK-PD6">
+                                <rect key="frame" x="0.0" y="64" width="600" height="497"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qbL-RV-wUn">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GalleryCell" id="8dM-tq-2dv" customClass="ThumbnailCell" customModule="ParseStarterProject" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="msg-oU-qBD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="msg-oU-qBD" firstAttribute="top" secondItem="8dM-tq-2dv" secondAttribute="topMargin" constant="-8" id="1wQ-di-QQs"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="msg-oU-qBD" secondAttribute="trailing" constant="-8" id="OBO-Fa-qyA"/>
+                                            <constraint firstItem="msg-oU-qBD" firstAttribute="leading" secondItem="8dM-tq-2dv" secondAttribute="leadingMargin" constant="-8" id="PFf-vk-VCG"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="msg-oU-qBD" secondAttribute="bottom" constant="-8" id="rZI-vH-8sa"/>
+                                        </constraints>
+                                        <size key="customSize" width="45" height="45"/>
+                                        <connections>
+                                            <outlet property="thumbnailImage" destination="msg-oU-qBD" id="6rY-LX-M7K"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xlx-MK-PD6" secondAttribute="trailing" constant="-16" id="I2b-ta-bCt"/>
+                            <constraint firstItem="Xlx-MK-PD6" firstAttribute="leading" secondItem="DXp-rt-u6F" secondAttribute="leadingMargin" constant="-16" id="Lz2-b7-Zfd"/>
+                            <constraint firstItem="6l5-P8-6TF" firstAttribute="top" secondItem="Xlx-MK-PD6" secondAttribute="bottom" constant="-10" id="XlX-NW-2q2"/>
+                            <constraint firstItem="Xlx-MK-PD6" firstAttribute="top" secondItem="lUj-AW-BWE" secondAttribute="bottom" id="j2n-b7-HuC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Xlx-MK-PD6" id="pHL-ol-HvO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8e2-Zm-u7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2301" y="264"/>
         </scene>
         <!--Item-->
         <scene sceneID="UxO-ME-epP">
@@ -192,7 +257,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Photo Feed" id="M6E-mY-w5X"/>
                     <connections>
-                        <outlet property="tableView" destination="PKb-wc-dFo" id="jf3-rU-5FB"/>
+                        <outlet property="tableView" destination="PKb-wc-dFo" id="Vaf-PY-h2P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3B5-Pt-beS" userLabel="First Responder" sceneMemberID="firstResponder"/>
