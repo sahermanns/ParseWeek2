@@ -72,9 +72,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                    <rect key="frame" x="184" y="480" width="320" height="199"/>
-                                </variation>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.65921156339999998" blue="0.21686893269999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,7 +81,6 @@
                             <constraint firstItem="Ktw-dg-Nom" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="5Cs-Ia-ZAR"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3Nq-oz-JMX" secondAttribute="bottom" constant="8" symbolic="YES" id="5k7-aP-Se3">
                                 <variation key="widthClass=compact" constant="8"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="72"/>
                             </constraint>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ktw-dg-Nom" secondAttribute="bottom" constant="65" id="77m-2o-H8t">
                                 <variation key="widthClass=compact" constant="-120"/>
