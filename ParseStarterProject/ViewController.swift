@@ -29,6 +29,10 @@ class ViewController: UIViewController {
   @IBOutlet weak var snapShot: UIImageView!
   @IBOutlet weak var alertButton: UIButton!
   @IBOutlet weak var collectionView: UICollectionView!
+  @IBOutlet weak var snapShotDescription: UITextField!
+  
+//  var textField(String) = UITextField
+  
   
   
  
@@ -97,6 +101,11 @@ class ViewController: UIViewController {
         let post = PFObject(className: "Post")
         post["text"] = "post description"
         
+//        if let description = self.snapShotDescription.text, data = UITextField(String.self, 1.0) {
+//          let file = PFFile(name: "post.text", data: data)
+//          post["description"] = file
+//        }
+        
         if let image = self.snapShot.image,
           data = UIImageJPEGRepresentation(image, 1.0)
         {
@@ -119,7 +128,7 @@ class ViewController: UIViewController {
       alert.addAction(galleryAction)
 
       
-      self.picker.delegate = self
+      picker.delegate = self
       self.picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
     }
 
