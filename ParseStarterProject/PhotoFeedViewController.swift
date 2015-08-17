@@ -61,6 +61,10 @@ extension PhotoFeedViewController: UITableViewDataSource, UITableViewDelegate {
     let cell = tableView.dequeueReusableCellWithIdentifier("PostCell", forIndexPath: indexPath) as! PostCell
     var post = posts[indexPath.row]
     
+    if let postDescription = post["text"] as? String {
+      cell.snapShotDescription.text = postDescription
+    }
+    
     if let imageFile = post["image"] as? PFFile {
       imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
         if let  error = error {
@@ -73,18 +77,6 @@ extension PhotoFeedViewController: UITableViewDataSource, UITableViewDelegate {
         })
     
     }
-//    if let imageFile = post["description"] as? PFFile {
-//      imageFile.getDataInBackgroundWithBlock({ (data, error) -> Void in
-//        if let  error = error {
-//          println(error.localizedDescription)
-//        } else if let data = data, description = UITextField.self {
-//          NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-//            cell.snapShotDescription.text = description
-//          })
-//        }
-//      })
-//      
-//    }
   
   return cell
   }

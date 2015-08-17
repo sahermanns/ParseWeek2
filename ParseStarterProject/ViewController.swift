@@ -10,7 +10,7 @@ import Parse
 
 class ViewController: UIViewController {
   
-//  buffer constants
+//*Mark buffer constants
   let kTrailingImageViewConstraintBuffer: CGFloat = 40
   let kLeadingImageViewConstraintBuffer: CGFloat = -40
   let kTopImageViewConstraintBuffer: CGFloat = 40
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 
   let kStandardConstraintMargin : CGFloat = 8
 
-//all outlets
+//*Mark all outlets
   @IBOutlet weak var trailingImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var leadingImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var bottonImageViewConstraint: NSLayoutConstraint!
@@ -31,9 +31,8 @@ class ViewController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   @IBOutlet weak var snapShotDescription: UITextField!
   
-//  var textField(String) = UITextField
-  
-  
+  var snapShotText: String?
+
   
  
   let picker: UIImagePickerController = UIImagePickerController()
@@ -64,6 +63,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
       
       title = "Snap Shot"
+      
+      snapShotDescription.delegate = self
       collectionView.dataSource = self
       collectionView.delegate = self
       displayImage = UIImage(named: "flatLandPic.jpg")
@@ -99,12 +100,14 @@ class ViewController: UIViewController {
       let uploadAction = UIAlertAction(title: "Upload", style: UIAlertActionStyle.Default) { (alert) -> Void in
         
         let post = PFObject(className: "Post")
-        post["text"] = "post description"
+       
         
-//        if let description = self.snapShotDescription.text, data = UITextField(String.self, 1.0) {
-//          let file = PFFile(name: "post.text", data: data)
-//          post["description"] = file
-//        }
+        if let snapShotText = self.snapShotText {
+           post["text"] = snapShotText
+        }else{
+          post["text"] = "No Description"
+
+        }
         
         if let image = self.snapShot.image,
           data = UIImageJPEGRepresentation(image, 1.0)
@@ -114,7 +117,7 @@ class ViewController: UIViewController {
         }
         
         post.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
-          
+          self.snapShotDescription.text = ""
         })
       }
       
@@ -188,7 +191,7 @@ class ViewController: UIViewController {
   
 }
 
-//*** Image Picker Extension below ***
+//*Mark Image Picker Extension below ***
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   
@@ -205,7 +208,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
   }
 }
 
-//*** CollectionView Datasource functionality below ***
+//*Mark CollectionView Datasource functionality below ***
 extension ViewController : UICollectionViewDataSource {
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return filters.count
@@ -225,7 +228,7 @@ extension ViewController : UICollectionViewDataSource {
   }
 }
 
-//**Extension of the CollectionView Delegate
+//*MarkExtension of the CollectionView Delegate
 extension ViewController : UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     let filter = filters[indexPath.row]
@@ -237,11 +240,23 @@ extension ViewController : UICollectionViewDelegate {
   
 }
 
-//**
+//*Mark Image Delegate
 extension ViewController : ImageSelectedDelegate {
   func controllerDidSelectImage(newImage: UIImage) {
     displayImage = newImage
   }
+}
+//*Mark Text field delegate
+extension ViewController : UITextFieldDelegate {
+//  var description: String = self.UITextField.text
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    self.snapShotText = textField.text
+    println(self.snapShotText)
+    textField.resignFirstResponder()
+    return true
+  }
+  
+  
 }
 
 
