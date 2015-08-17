@@ -10,7 +10,7 @@ import Parse
 
 class ViewController: UIViewController {
   
-//*Mark buffer constants
+//MARK: buffer constants
   let kTrailingImageViewConstraintBuffer: CGFloat = 40
   let kLeadingImageViewConstraintBuffer: CGFloat = -40
   let kTopImageViewConstraintBuffer: CGFloat = 40
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 
   let kStandardConstraintMargin : CGFloat = 8
 
-//*Mark all outlets
+//MARK: all outlets
   @IBOutlet weak var trailingImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var leadingImageViewConstraint: NSLayoutConstraint!
   @IBOutlet weak var bottonImageViewConstraint: NSLayoutConstraint!
@@ -191,7 +191,7 @@ class ViewController: UIViewController {
   
 }
 
-//*Mark Image Picker Extension below ***
+//MARK: Image Picker Extension below ***
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   
@@ -208,7 +208,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
   }
 }
 
-//*Mark CollectionView Datasource functionality below ***
+//MARK: CollectionView Datasource functionality below ***
 extension ViewController : UICollectionViewDataSource {
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return filters.count
@@ -228,7 +228,7 @@ extension ViewController : UICollectionViewDataSource {
   }
 }
 
-//*MarkExtension of the CollectionView Delegate
+//MARK: Extension of the CollectionView Delegate
 extension ViewController : UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     let filter = filters[indexPath.row]
@@ -240,13 +240,13 @@ extension ViewController : UICollectionViewDelegate {
   
 }
 
-//*Mark Image Delegate
+//MARK: Image Delegate
 extension ViewController : ImageSelectedDelegate {
   func controllerDidSelectImage(newImage: UIImage) {
     displayImage = newImage
   }
 }
-//*Mark Text field delegate
+//MARK: Text field delegate
 extension ViewController : UITextFieldDelegate {
 //  var description: String = self.UITextField.text
   func textFieldShouldReturn(textField: UITextField) -> Bool {

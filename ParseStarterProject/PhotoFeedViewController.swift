@@ -50,7 +50,7 @@ class PhotoFeedViewController: UIViewController {
   
   
 }
-
+//MARK: Tableview delegate and datasource extension
 extension PhotoFeedViewController: UITableViewDataSource, UITableViewDelegate {
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

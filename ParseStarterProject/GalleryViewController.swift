@@ -67,7 +67,7 @@ class GalleryViewController: UIViewController {
     }
 
 }
-//* CollectionView data source functionality
+//MARK: CollectionView data source functionality
 extension GalleryViewController : UICollectionViewDataSource {
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return fetchResult.count
@@ -89,7 +89,7 @@ extension GalleryViewController : UICollectionViewDataSource {
     return cell
   }
 }
-//**CollectionView Delegate functionality
+//MARK:CollectionView Delegate functionality
 extension GalleryViewController : UICollectionViewDelegate {
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     
